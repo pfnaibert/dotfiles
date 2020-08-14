@@ -33,7 +33,7 @@ alias ref="source ~/.bashrc"
 alias bashrc="vim ~/dotfiles/bashrc"
 alias aliases="vim ~/dotfiles/aliases.sh"
 alias vimrc="vim ~/dotfiles/vimrc"
-alias vimlatex="vim ~/dotfiles/vimrc_latex"
+alias vimlatex="vim ~/dotfiles/vimrc_latex.vim"
 ##############################################################
 # SHORTCUTS
 

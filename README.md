@@ -94,7 +94,7 @@ sudo pacman -S i3-wm i3blocks i3status
 
 Work
 ```bash
-sudo pacman -S r octave perl emacs pandoc
+sudo pacman -S r octave perl emacs pandoc pandoc-citeproc
 ```
 
 TeXlive takes too long, so I put it separately along with evince.

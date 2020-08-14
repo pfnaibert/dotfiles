@@ -232,5 +232,16 @@ call plug#end()
 	source ~/dotfiles/vimrc_latex.vim
 
 " ============================================
+" Rmarkdown as markdown
+
+augroup rmarkdown
+    " au! BufRead,BufNewFile *.Rmd  set filetype=rmarkdown
+    au! BufRead,BufNewFile *.Rmd  set filetype=markdown
+augroup END
+
+"render
+	 autocmd Filetype markdown nnoremap <F5> :!clear && Rscript -e 'rmarkdown::render("%")' <CR>
+
+" ============================================
 " END OF VIMRC
 " ============================================

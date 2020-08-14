@@ -1,0 +1,552 @@
+#+TITLE: Emacs Configuration
+#+AUTHOR: Paulo Ferreira Naibert
+#+EMAIL: paulo.naibert@gmail.com
+#+OPTIONS: toc:nil num:nil
+
+Export org mode: =C-c C-e=
+
+* Other dotfiles
+  
+See Videos:
+
+- [[https://www.youtube.com/watch?v=d6iY_1aMzeg&list=PLX2044Ew-UVVv31a0-Qn3dA6Sd_-NyA1n][EMACS PLAYLIST]]
+- [[https://www.youtube.com/watch?v=vCyBu8Az254][Org Mode Tutorial]]
+- [[https://github.com/daedreth/UncleDavesEmacs][UncleDaves GitHub]]
+
+** VIM BINDINGS
+
+- [[https://blog.aaronbieber.com/2015/05/24/from-vim-to-emacs-in-fourteen-days.html][aaron bieber vim2emacs]]
+- [[https://github.com/hrs/dotfiles/][hrs dotfiles]]
+
+* Install Packages MANUALLY
+
+To install packages manually use:
+=M-x package-install RET= then  =packagename RET=
+
+* Minor Settings
+
+** show lines and columns
+#+BEGIN_SRC emacs-lisp
+  (line-number-mode 1)
+  (column-number-mode 1)
+  
+; (add-hook 'find-file-hook (lambda () (linum-mode 1)))
+(global-linum-mode 1)
+; (setq-default global-linum-mode t)
+(setq linum-format "%4d \u2502 ")
+
+(setq-default word-wrap t)
+(global-visual-line-mode t)
+#+END_SRC
+
+** No ugly gui elements 
+
+#+BEGIN_SRC emacs-lisp
+;(tool-bar-mode -1)
+;(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(setq inhibit-startup-message t) ;; no startup message
+#+END_SRC
+
+** clock
+#+BEGIN_SRC emacs-lisp
+  (setq display-time-24hr-format t)
+  (display-time-mode 1)
+#+END_SRC
+
+** electric
+#+BEGIN_SRC emacs-lisp
+  (setq electric-pair-pairs '(
+			      (?\( . ?\))
+			      (?\[ . ?\])
+			      (?\{ . ?\})
+			      (?\" . ?\")
+			      ))
+  (electric-pair-mode t)
+#+END_SRC
+
+** No backups
+
+#+BEGIN_SRC emacs-lisp
+(setq make-backup-file nil)
+(setq auto-save-default nil)
+#+END_SRC
+
+** y or n
+  
+#+BEGIN_SRC emacs-lisp
+(defalias 'yes-or-no-p 'y-or-n-p)
+#+END_SRC
+
+** no bell
+
+#+BEGIN_SRC emacs-lisp
+;(setq ring-bell-function 'ignore)
+#+END_SRC
+
+** Pretty Symbols
+
+#+BEGIN_SRC emacs-lisp
+(when window-system (global-prettify-symbols-mode t) )
+#+END_SRC
+
+** Line Highlight
+   
+#+BEGIN_SRC emacs-lisp
+(when window-system (global-hl-line-mode t))
+; (global-hl-line-mode t)
+#+END_SRC
+
+** Better Scrolling
+
+#+BEGIN_SRC 
+(setq scroll-conservatively 100) 
+#+END_SRC
+
+* EXWM
+  
+See Video [[https://www.youtube.com/watch?v=Gk9-q8tXbMs][Emacs Tutorial 14 - EXWM aka managing X windows with emacs]].
+
+#  #+BEGIN_SRC emacs-lisp
+#    (use-package exwm
+#      :ensure t
+#      :config
+#      (require 'exwm-config)
+#      (exwm-config-default))
+#  #+END_SRC
+#  
+#  #+BEGIN_SRC emacs-lisp
+#  (require 'exwm-systemtray)
+#  (exwm-systemtray-enable)
+#  #+END_SRC
+#  
+#  #+BEGIN_SRC emacs-lisp
+#  (global-set-key (kbd "s-k") 'exmw-workspace-delete)
+#  (global-set-key (kbd "s-w") 'exmw-workspace-swap)
+#  #+END_SRC
+
+* Set personal information
+  
+* Terminal
+** Set terminal to bash shell
+   
+#+BEGIN_SRC emacs-lisp 
+(defvar my-term-shell "/bin/bash")
+(defadvice ansi-term (before force-bash)
+  (interactive (list my-term-shell)))
+(ad-activate 'ansi-term)
+(global-set-key  (kbd "<M-s-return>") 'ansi-term)
+#+END_SRC
+
+* which-key
+
+#+BEGIN_SRC emacs-lisp
+(use-package which-key
+  :ensure t
+  :init
+  (which-key-mode))
+#+END_SRC
+
+* dashboard
+#+BEGIN_SRC emacs-lisp
+  (use-package dashboard
+    :ensure t
+    :config
+    (dashboard-setup-startup-hook)
+    (setq dashboard-items '((bookmarks . 5)
+			    (recents . 5)))
+    (setq dashboard-banner-logo-title "OLÁ PAULO!"))
+#+END_SRC
+* mode-line
+** spaceline
+#+BEGIN_SRC emacs-lisp
+  (use-package spaceline
+    :ensure t
+    :config
+    (require 'spaceline-config)
+    (setq powerline-default-separator (quote arrow))
+    (spaceline-spacemacs-theme))
+#+END_SRC
+** diminish
+   #+BEGIN_SRC emacs-lisp
+     (use-package diminish
+       :ensure t
+       :init
+       (diminish 'beacon-mode)
+       (diminish 'which-key-mode)
+       (diminish 'rainbow-mode)
+       )
+   #+END_SRC
+
+* dmenu
+  #+BEGIN_SRC emacs-lisp
+    (use-package dmenu
+      :ensure t
+      :bind
+    ("s-SPC" . 'dmenu)
+      )
+  #+END_SRC
+  
+* symon
+  
+Mostrar uso dos recursos
+#+BEGIN_SRC emacs-lisp
+  (use-package symon
+    :ensure t
+    :bind
+    ("s-h" . symon-mode))
+#+END_SRC
+
+* beacon
+
+#+BEGIN_SRC emacs-lisp
+(use-package beacon
+  :ensure t
+  :init
+  (beacon-mode 1))
+#+END_SRC
+
+* TRABALHOS
+
+Tenho de instalar os seguintes pacotes para conseguir =R=:
+- Ess
+Tenho de instalar os seguintes pacotes para conseguir \LaTeX:
+- Auc\TeX
+- cdlatex
+
+* ORG
+
+=M-x package-install RET= e  =auctex RET=
+
+#+BEGIN_SRC emacs-lisp
+(require 'org)
+(use-package cdlatex
+:ensure t
+:init)
+; (use-package auctex
+; :ensure t
+; :init)
+#+END_SRC
+  
+#+BEGIN_SRC emacs-lisp
+(setq org-latex-pdf-process
+      '("pdflatex -interaction nonstopmode -output-directory %o %f"
+	"bibtex %b"
+	"pdflatex -interaction nonstopmode -output-directory %o %f"
+	"pdflatex -interaction nonstopmode -output-directory %o %f"))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(require 'ox-latex)
+;(load "org-exp")
+;(load "org-latex")
+
+(add-to-list 'org-latex-classes
+             '("beamer"
+               "\\documentclass\[presentation\]\{beamer\}"
+               ("\\section\{%s\}" . "\\section*\{%s\}")
+               ("\\subsection\{%s\}" . "\\subsection*\{%s\}")
+               ("\\subsubsection\{%s\}" . "\\subsubsection*\{%s\}")))
+
+(add-to-list 'org-latex-classes
+             '("elsarticle"
+               "\\documentclass[preprint,authoryear,review,12pt]{elsarticle}"
+               ("\\section{%s}"       . "\\section*{%s}")
+               ("\\subsection{%s}"    . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}"     . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}"  . "\\subparagraph*{%s}") ) )
+
+(add-to-list 'org-latex-classes
+             '("myreport"
+               "\\documentclass[a4paper,11pt]{report}"
+               ;; ("\\part{%s}"       . "\\part*{%s}")
+               ("\\chapter{%s}"       . "\\chapter*{%s}")
+               ("\\section{%s}"       . "\\section*{%s}")
+               ("\\subsection{%s}"    . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}"     . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}"  . "\\subparagraph*{%s}") ) )
+
+#+END_SRC
+
+Eu tenho de instalar o Auc\TeX e o cdlatex para isso funcionar.
+
+#+BEGIN_SRC emacs-lisp
+(add-hook 'org-mode-hook 'turn-on-org-cdlatex)
+#+END_SRC
+
+** org-ref
+
+#+BEGIN_SRC emacs-lisp
+  (use-package org-ref
+    :ensure t
+    :init)
+#+END_SRC
+
+
+** basic config
+   
+Não quero editar código numa janela ao lado.
+O código abaixo abre uma janela "em cima" da janela atual.
+
+#+BEGIN_SRC emacs-lisp
+  (setq org-src-window-setup 'current-window)
+
+  (add-to-list 'org-structure-template-alist
+	       '("el" "#+BEGIN_SRC emacs-lisp\n?\n#+END_SRC"))
+#+END_SRC
+
+
+** ORG BULLETS
+   
+#+BEGIN_SRC emacs-lisp
+  (use-package org-bullets
+    :ensure t
+    :config
+    (add-hook 'org-mode-hook (lambda () (org-bullets-mode))))
+#+END_SRC
+
+* IDO
+  
+** enable ido mode
+  
+#+BEGIN_SRC emacs-lisp
+  (setq ido-enable-flex-matching nil)
+  (setq ido-create-new-buffer 'always)
+  (setq ido-everywhere t)
+  (ido-mode 1)
+#+END_SRC
+
+
+** ido-vertical
+   
+#+BEGIN_SRC emacs-lisp
+  (use-package ido-vertical-mode
+    :ensure t
+    :init
+    (ido-vertical-mode 1))
+  (setq ido-vertical-define-keys 'C-n-and-C-p-only)
+#+END_SRC
+
+
+** smex
+
+#+BEGIN_SRC emacs-lisp
+  (use-package smex
+    :ensure t
+    :init 
+    ;:init (smex-initialize)
+    :bind
+    ("M-x" . smex))
+#+END_SRC
+
+
+** switch buffer
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
+#+END_SRC
+
+* buffers 
+
+** enable ibuffer
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-x b") 'ibuffer)
+#+END_SRC
+
+* avy
+
+#+BEGIN_SRC emacs-lisp
+(use-package avy
+    :ensure t
+    :bind
+    ("M-s" . avy-goto-char))
+#+END_SRC
+
+* ESS
+http://ess.r-project.org/index.php?Section=documentation&subSection=manuals
+http://blog.revolutionanalytics.com/2014/03/emacs-ess-and-r-for-zombies.html
+
+#+BEGIN_SRC emacs-lisp
+
+; (use-package helm-R)
+
+  (use-package ess
+    :ensure t)
+#+END_SRC
+
+
+** R in ORG
+
+https://orgmode.org/worg/org-tutorials/org-R/org-R.html
+
+http://sachachua.com/blog/2014/05/getting-r-ggplot2-work-emacs-org-mode-babel-blocks-also-tracking-number-todos/
+
+https://github.com/erikriverson/org-mode-R-tutorial/blob/master/org-mode-R-tutorial.org
+
+https://orgmode.org/manual/Languages.html#Languages
+
+Allow =babel= to evaluate Emacs lisp, Ruby, dot, or Gnuplot code.
+
+#+BEGIN_SRC emacs-lisp
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '(
+   (R          . t)
+   (matlab     . t)
+   (octave     . t)
+   (latex      . t)
+   (dot        . t)
+   (org        . t)
+   (perl       . t)
+   (python     . t)
+   (calc       . t)
+   ; (sh         . t)
+;  (sqlite     . t)
+   (gnuplot    . t)
+   (emacs-lisp . t)))
+#+END_SRC
+  
+O de cima foi baseado no de baixo
+#+BEGIN_SRC emacs-lisp
+;  (org-babel-do-load-languages
+;   'org-babel-load-languages
+;   '((emacs-lisp . t)
+;     (ruby . t)
+;     (dot . t)
+;     (gnuplot . t)))
+#+END_SRC
+
+Don't ask before evaluating code blocks.
+
+#+BEGIN_SRC emacs-lisp
+  (setq org-confirm-babel-evaluate nil)
+#+END_SRC
+
+Rever:
+
+#+BEGIN_SRC emacs-lisp
+  (setf org-babel-default-header-args:org '((:exports . "code")))
+#+END_SRC
+
+
+* EVIL VIM
+** mine
+
+https://emacs.stackexchange.com/questions/12287/re-creating-vimrc-key-mappings-in-emacs/12303
+
+#+BEGIN_SRC emacs-lisp
+  ;; Keep the region active when shifting
+  ; (evil-map visual "<" "<gv")
+  ; (evil-map visual ">" ">gv")
+#+END_SRC
+
+* Convenient Functions
+* config edit/reload
+** edit
+
+#+BEGIN_SRC emacs-lisp
+  (defun config-visit ()
+    (interactive)
+    (find-file "~/.emacs.d/config.org"))
+  (global-set-key (kbd "C-c e") 'config-visit)
+#+END_SRC
+
+** reload
+
+#+BEGIN_SRC emacs-lisp
+  (defun config-reload ()
+    (interactive)
+    (org-babel-load-file (expand-file-name "~/.emacs.d/config.org")))
+  (global-set-key (kbd "C-c r") 'config-reload)
+#+END_SRC
+
+* Rainbow
+#+BEGIN_SRC emacs-lisp
+  (use-package rainbow-mode
+    :ensure t
+    :init (rainbow-mode 1))
+#+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (use-package rainbow-delimiters
+    :ensure t
+    :init
+    (rainbow-delimiters-mode 1))
+#+END_SRC
+* Exporting
+
+Allow export to markdown and beamer (for presentations).
+
+#+BEGIN_SRC emacs-lisp
+  (require 'ox-md)
+  (require 'ox-beamer)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(setq TeX-parse-self t)
+(setq Tex-PDF-mode t)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'org-mode-hook
+	    '(lambda ()
+	       (delete '("\\.pdf\\'" . default) org-file-apps)
+	       (add-to-list 'org-file-apps '("\\.pdf\\'" . "evince %s"))))
+#+END_SRC
+
+* BROWSER
+Exporting to HTML and opening the results triggers =/usr/bin/sensible-browser=,
+which checks the =$BROWSER= environment variable to choose the right browser.
+I'd like to always use +Firefox+ chrome, so:
+
+#+BEGIN_SRC emacs-lisp
+(setenv "BROWSER" "chromium-browser")
+  ;(setenv "BROWSER" "firefox")
+#+END_SRC
+
+* Files
+** ORG
+
+#+BEGIN_SRC emacs-lisp
+;  (defun config-visit ()
+;    (interactive)
+;    (find-file "~/.emacs.d/config.org"))
+;  (global-set-key (kbd "C-c e") 'config-visit)
+#+END_SRC
+
+* auto completion
+** company 
+#+BEGIN_SRC emacs-lisp
+  (use-package company
+    :ensure t
+    :init
+    (add-hook 'after-init-hook 'global-company-mode))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(setq ess-use-company 'script-only)
+(define-key company-active-map (kbd "M-h" ) 'company-show-doc-buffer)
+#+END_SRC
+
+
+
+
+
+* undefined
+
+#+BEGIN_SRC emacs-lisp
+  (use-package popup-kill-ring
+    :ensure t
+    :bind ("M-y" . popup-kill-ring))
+#+END_SRC
+
+** lines relative number
+
+#+BEGIN_SRC emacs-lisp
+  (use-package linum-relative
+    :ensure t
+    :config
+    (setq linum-relative-current-symbol "")
+    (add-hook 'prog-mode-hook 'linum-relative-mode)  )
+#+END_SRC

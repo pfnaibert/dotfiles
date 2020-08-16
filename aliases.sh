@@ -60,15 +60,10 @@ alias TXh="cp ~/Documents/LaTeX/handout.tex"
 
 ##############################################################
 # Find files
-alias sf=" find . -maxdepth 1 -type f"
-alias ptf=" find . -maxdepth 1 -type f \( -iname '*.pdf' -o -iname '*.tex' -o -iname '*.bib' -o -iname '*.txt' -o -iname '*.md' \)"
-alias ptfn=" find . -maxdepth 1 -type f ! \( -iname '*.pdf' -o -iname '*.tex' -o -iname '*.bib' -o -iname '*.txt' -o -iname '*.md' \)"
-alias ptfn_rm=" find . -maxdepth 1 -type f ! \( -iname '*.pdf' -o -iname '*.tex' -o -iname '*.bib' -o -iname '*.txt' -o -iname '*.md' \) -exec rm {} \;"
 alias fifi=" find . -maxdepth 1 -type f -iname"
 alias fifin="find . -maxdepth 1 -type f ! -iname"
 alias ld="find . -maxdepth 1 -type d"
-alias lf="find . -maxdepth 1 -type f"
-lfx() { find ./ -maxdepth 1 -type f -iname *.$1 ;}
+# alias lf="find . -maxdepth 1 -type f"
 
 # delete empty files
 alias demptyf="find ./ -empty -type d -delete"
@@ -77,8 +72,6 @@ alias demptyf="find ./ -empty -type d -delete"
 # R
 # https://www.tidyverse.org/articles/2017/12/workflow-vs-script/
 alias R="R --no-save --no-restore-data"
-alias Rso="R --interactive && R -f ./tmp.R"
-alias rproflocal="v ./.Rprofile"
 
 ##############################################################
 # RSYNC
@@ -123,27 +116,14 @@ findandmoveext() { find ./ -maxdepth 1 -type f -iname "*.$1" -exec mv {} $2 \; ;
 
 ##############################################################
 # config files
-
 alias config="   cd $HOME/.config     && ranger"
 alias urxvtrc="    vim $HOME/.Xresources"
 alias urxvtload="xrdb ~/.Xresources"
-
-# VIM
-alias vimbundle=" cd $HOME/.vim/bundle && ranger"
-alias vimsnips=" cd ~/.vim/snips"
-
-gv() { cd ~/.vim/bundle && git clone $1.git ;}
-vg() { cd ~/.vim/bundle && git clone $1.git ;}
 
 ##############################################################
 # FOTOS DOC
 alias feh1="feh --scale-down --auto-zoom"
 alias feh2="feh -d --geometry 1020x1020"
-
-#########################################################################
-# Calendar
-calnote() { echo "$@" >> $wiki/calendar ;}
-alias synccal="cp dropbox/calnotes $HOME"
 
 #########################################################################
 # surf
@@ -170,10 +150,7 @@ alias crep="grep --color=always"
 
 CF() { cd ~/.config/$1 && ls ;}
 
-alias portword="sdcv -u quick_portuguese-english"
-
 #########################################################################
-
 alias tirartudo="find ./ -iname * -exec mv {} ../"
 
 mvmp4() { find ./ -iname "*.mp4" -exec mv {} $1 \; ;}
@@ -186,17 +163,13 @@ vol() { pactl set-sink-volume 1 $1;}
 # GIT COMMANDS
 
 alias gitls="git ls-tree --full-tree -r HEAD"
-alias gitstatus="git status"
 alias gitrmfile="git rm --cached"
 alias gitrmfolder="git rm -r --cached"
 alias gitcommit="git commit -m"
 # gitc() { git commit -m "$1";}
 
-# GIT
-getgit1() { git clone http://github.com/$1.git ;}
-
 # get git
-gg() { git clone $1.git ;}
+getgit() { git clone http://github.com/$1.git ;}
 
 ##############################################################
 # CSGO

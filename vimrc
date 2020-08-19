@@ -266,9 +266,17 @@ augroup END
 
 " settings :: Nvim-R plugin
 " R output is highlighted with current colorscheme
-let g:rout_follow_colorscheme = 1
+	let g:rout_follow_colorscheme = 1
 " R commands in R output are highlighted
-let g:Rout_more_colors = 1
+	let g:Rout_more_colors = 1
+" rconsole width
+	" let R_rconsole_width = 90
+" terminal width
+   " let R_setwidth = -1
+" external terminal
+"	let R_external_term = 1
+" disable <_> as assign operator
+	let R_assign = 0
 
 " ============================================
 " END OF VIMRC

@@ -259,5 +259,18 @@ yay -S spotify
 
 # SKYPE
 
+# R Packages
+
+```r
+install.packages("tidyverse")
+install.packages("ggplot2")
+install.packages("dygraphs")
+install.packages("rmarkdown")
+
+install.packages("lintr")
+
+install.packages("xts")
+```
+
 # RSTUDIO
 

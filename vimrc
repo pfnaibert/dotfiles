@@ -3,7 +3,10 @@
 " paulo ferreira naibert
 " github.com/pfnaibert
 " ============================================
+" easier help
+	nnoremap <C-h> <esc>:help
 
+" ============================================
 " source the open file	:source %
 " open terminal	:term
 " open vertical terminal	:vert term
@@ -13,9 +16,6 @@
 " https://linuxhint.com/how-to-use-vim-split-screen/
 " open vertical split	<C-w>v
 
-" ============================================
-" easier help
-	nnoremap <C-h> <esc>:help
 
 " ============================================
 " Automatic reloading of .vimrc
@@ -23,6 +23,7 @@
 
 " Automatic reloading of .bashrc
 "	autocmd BufWritePost ~/.bashrc source %
+
 
 " ============================================
 " REFS:
@@ -38,6 +39,7 @@
 " vim-plug:	    https://github.com/junegunn/vim-plug
 " Run the following line to Instll plugins :PlugInstall
 call plug#begin()
+	Plug 'jalvesaq/Nvim-R'
 	Plug 'junegunn/goyo.vim'
 	Plug 'vim-airline/vim-airline'
 	Plug 'morhetz/gruvbox'
@@ -255,6 +257,16 @@ augroup END
 
 "render
 	 autocmd Filetype markdown nnoremap <F5> :!clear && Rscript -e 'rmarkdown::render("%")' <CR>
+
+" ============================================
+" VIM as an R IDE
+" https://medium.com/free-code-camp/turning-vim-into-an-r-ide-cd9602e8c217
+
+" settings :: Nvim-R plugin
+" R output is highlighted with current colorscheme
+let g:rout_follow_colorscheme = 1
+" R commands in R output are highlighted
+let g:Rout_more_colors = 1
 
 " ============================================
 " END OF VIMRC

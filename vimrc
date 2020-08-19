@@ -8,8 +8,6 @@
 
 " ============================================
 " source the open file	:source %
-" open terminal	:term
-" open vertical terminal	:vert term
 
 " ============================================
 " splits
@@ -194,8 +192,12 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 	nnoremap <Leader>bn :bn <CR>
 	nnoremap <Leader>bf :bf <CR>
 
+" ============================================
 " terminal
-	nnoremap <Leader>te :term <CR>
+" open terminal	:term
+" open vertical terminal	:vert term
+	nnoremap <Leader>tv :vert term <CR>
+	nnoremap <Leader>th :term <CR>
 
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 	nnoremap Y y$

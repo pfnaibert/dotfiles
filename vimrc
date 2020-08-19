@@ -5,10 +5,17 @@
 " ============================================
 
 " source the open file	:source %
+" open terminal	:term
+" open vertical terminal	:vert term
+
+" ============================================
+" splits
+" https://linuxhint.com/how-to-use-vim-split-screen/
+" open vertical split	<C-w>v
 
 " ============================================
 " easier help
-	nnoremap <c-h> <esc>:help
+	nnoremap <C-h> <esc>:help
 
 " ============================================
 " Automatic reloading of .vimrc
@@ -70,6 +77,9 @@ call plug#end()
 " ===============================================================
 " first thing is entering vim mode, not plain vi
 	set nocompatible
+
+" disable automaticc commenting on newline:
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " enable syntax and plugins
 	syntax enable
@@ -169,17 +179,21 @@ call plug#end()
 	nnoremap <C-i> <C-i>zz
 
 " splits
-	set splitbelow splitright
-	nnoremap <C-DOWN> <C-W><C-J>
-	nnoremap <C-UP> <C-W><C-K>
-	nnoremap <C-RIGHT> <C-W><C-L>
-	nnoremap <C-LEFT> <C-W><C-H>
+	set splitright splitbelow
+
+	nnoremap <C-j> <C-w><C-J>
+	nnoremap <C-k> <C-w><C-K>
+	nnoremap <C-l> <C-w><C-L>
+	nnoremap <C-h> <C-w><C-H>
 
 " buffers
 	nnoremap <Leader>bd :bd <CR>
 	nnoremap <Leader>bp :bp <CR>
 	nnoremap <Leader>bn :bn <CR>
 	nnoremap <Leader>bf :bf <CR>
+
+" terminal
+	nnoremap <Leader>te :term <CR>
 
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 	nnoremap Y y$

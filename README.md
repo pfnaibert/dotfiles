@@ -89,7 +89,7 @@ sudo pacman -S pulseaudio pavucontrol pamixer pulseaudio-alsa
 
 i3wm
 ```bash
-sudo pacman -S i3-wm i3blocks i3status
+sudo pacman -S i3-wm i3blocks i3status w3m tmux
 ```
 
 Work
@@ -264,9 +264,11 @@ yay -S spotify
 ```r
 install.packages("tidyverse")
 install.packages("ggplot2")
+install.packages("ggthemes")
 install.packages("dygraphs")
 install.packages("rmarkdown")
 
+install.packages("devtools")
 install.packages("lintr")
 
 install.packages("xts")

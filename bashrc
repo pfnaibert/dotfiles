@@ -18,6 +18,7 @@ export CHEATCOLORS=true
 export TERM=xterm-256color
 export EDITOR="vim"
 export BROWSER="chromium"
+# export BROWSER="google-chrome-stable"
 # export BROWSER="w3m"
 #export BROWSER="surf"
 

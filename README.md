@@ -267,6 +267,7 @@ install.packages("ggplot2")
 install.packages("ggthemes")
 install.packages("dygraphs")
 install.packages("rmarkdown")
+install.packages("distill")
 
 install.packages("devtools")
 install.packages("lintr")

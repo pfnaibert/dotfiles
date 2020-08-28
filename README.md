@@ -97,6 +97,10 @@ Work
 sudo pacman -S r octave perl emacs pandoc pandoc-citeproc
 ```
 
+```bash
+sudo pacman -S gcc-fortran
+```
+
 TeXlive takes too long, so I put it separately along with evince.
 ```bash
 sudo pacman -S texlive-most evince
@@ -273,6 +277,8 @@ install.packages("devtools")
 install.packages("lintr")
 
 install.packages("xts")
+install.packages("astsa")
+install.packages("forecast")
 ```
 
 # RSTUDIO

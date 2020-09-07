@@ -279,6 +279,36 @@ install.packages("lintr")
 install.packages("xts")
 install.packages("astsa")
 install.packages("forecast")
+install.packages("mFilter")
+install.packages("devtools")
+```
+
+## Seasonal Package
+
+```{r}
+install.packages("seasonal")
+install.packages("x13binary") # not necessary
+```
+
+Links:
+- https://www.census.gov/srd/www/x13as/
+- https://www.census.gov/srd/www/x13as/x13down_unix.html
+
+Steps:
+- Download one of the compressed archives (such as x13asall.tar.gz).
+- Expand the contents of the file using the tar utility, using the following command:
+
+```
+tar -xzvf x13asall.tar.gz
+```
+
+`tar` might not function properly, check [this website](https://itsfoss.com/how-solve-stdin-gzip-format/).
+Put the `tar` file on your preferred folder, then use:
+
+```
+file MyFile.tar.gz
+
+tar xvf MyFile.tar.gz
 ```
 
 # RSTUDIO

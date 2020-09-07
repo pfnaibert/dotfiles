@@ -10,7 +10,7 @@
 # https://wiki.archlinux.org/index.php/R
 # https://rseek.org/
 # https://www.reddit.com/r/Rlanguage/
-
+#
 #----------------------------------
 # GIT
 # http://happygitwithr.com/
@@ -23,6 +23,15 @@ cat("\n sessão nova começada em", date(), "\n \n")
 # PACOTES
 # Don't ask me for my CRAN mirror every time
 options("repos" = c(CRAN = "http://cran.rstudio.com/"))
+
+##############################################
+# Automatically load the following packages
+library(rmarkdown)
+library(knitr)
+# library(blogdown)
+
+# Seasonal package, X13
+Sys.setenv(X13_PATH = "~/X13")
 
 ##############################################
 # .Last function

@@ -24,8 +24,8 @@
 
 " compiling
 " ============
-autocmd Filetype tex nnoremap <F5> :w<CR> :!clear && pdflatex -synctex=1 -interaction=nonstopmode %:t:r <CR><CR>
-autocmd Filetype tex nnoremap <m-F5> :w<CR> :!clear && pdflatex -synctex=1 -interaction=nonstopmode %:t:r <CR>
+autocmd Filetype tex nnoremap <F9> :w<CR> :!clear && pdflatex -synctex=1 -interaction=nonstopmode %:t:r <CR><CR>
+autocmd Filetype tex nnoremap <m-F9> :w<CR> :!clear && pdflatex -synctex=1 -interaction=nonstopmode %:t:r <CR>
 autocmd Filetype tex nnoremap <F6> :!bibtex %:t:r <CR>
 autocmd Filetype tex nnoremap <leader>lv :!evince %:t:r.pdf & disown <CR>
 " let g:livepreview_previewer = 'evince'

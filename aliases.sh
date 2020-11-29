@@ -14,7 +14,7 @@ alias sdn="sudo shutdown -P now"
 alias q="exit"
 alias :q="exit"
 alias v="vim"
-alias sv="sudo vim"
+# alias sv="sudo vim"
 alias r="ranger"
 alias p="sudo pacman"
 alias mkd='mkdir -pv'
@@ -85,7 +85,7 @@ alias backmedia="rsync -avh --delete /media/paulo/seagate-barracud /media/paulo/
 alias backvids="rsync -avh --delete /media/paulo/seagate-barracud/Videos /media/paulo/seagate_external/Videos/"
 
 # wd-black
-alias backhome="rsync -avh --delete /home/paulo $BARRACUDA/backups/ryzen/"
+alias backhome="rsync -avh --delete /home/pfn $BARRACUDA/backups/artix/"
 alias backdrop="rsync -avh --delete $DROPBOX /media/paulo/wd-black_750/backups/ubuntu-ryzen-dropbox/"
 
 ##############################################################

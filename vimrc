@@ -35,19 +35,20 @@
 
 " ============================================
 " vim-plug:	    https://github.com/junegunn/vim-plug
-" Run the following line to Instll plugins :PlugInstall
+" Run the following line to Insatll plugins :PlugInstall
 call plug#begin()
+ 	Plug 'ledger/vim-ledger'
+ 	Plug 'vim-latex/vim-latex'
+	Plug 'lervag/vimtex'
 	Plug 'jalvesaq/Nvim-R'
 	Plug 'junegunn/goyo.vim'
 	Plug 'vim-airline/vim-airline'
 	Plug 'morhetz/gruvbox'
-	Plug 'lervag/vimtex'
 	Plug 'srcery-colors/srcery-vim'
 	Plug 'tpope/vim-fugitive'
 "	Plug 'vim-syntastic/syntastic'
 " 	Plug 'chrisbra/unicode.vim'
 " 	Plug 'ryanoasis/vim-devicons'
-" 	Plug 'vim-latex/vim-latex'
 call plug#end()
 
 " ============================================
